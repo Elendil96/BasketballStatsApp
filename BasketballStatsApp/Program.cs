@@ -1,86 +1,4 @@
-﻿using BasketballStatsApp;
-
-//Console.WriteLine("Witaj w programie do zliczania punktów zdobytytcyh przez zaowdników");
-//Console.WriteLine("-------------------------------------------------------------------");
-//Console.WriteLine();
-//Console.WriteLine();
-//Console.WriteLine();
-//Console.WriteLine("Aby przejść dalej wybierz jedną w dwóch dostępnych opcji");
-//Console.WriteLine();
-//Console.WriteLine("1. Zapisz zdobyte punkty przez zawodnika do pliku ----> Wciśnij 1");
-//Console.WriteLine();
-//Console.WriteLine("2. Zapisz zdobyte punkty przez zawodnika w pamięci programu ----> Wciśnij 2");
-//Console.WriteLine();
-//Console.WriteLine("3.Zamknij pogram ----> Wciśnij 3");
-
-
-
-
-
-
-
-
-
-
-
-//var player = new PlayerInMemory("", "", "");
-//player.ScoreAdded += PlayerScoreAdded;
-
-//void PlayerScoreAdded(object sender, EventArgs args)
-//{
-//    Console.WriteLine("Dodano nową ocenę");
-//}
-
-
-
-
-
-
-
-
-
-
-
-//string choice = Console.ReadLine();
-
-//switch (choice)
-//{
-//    case "1":
-//    Option1:
-//        break;
-//    case "2":
-//    Option2:
-//        break;
-//    case "3":
-//    Option3:
-//        break;
-//    default:
-//        Console.WriteLine("Nieprawidłowy wybór. Spróbuj ponownie.");
-//        break;
-//}
-
-//static void Option1(PlayerInMemory)
-//{
-//    Console.WriteLine("Wybrano opcję 1. Wprowadź dane, a następnie zatwierdź klawiszem K");
-//    Console.WriteLine("Podaj imię zawodnika:");
-//    string name = Console.ReadLine();
-//    player.Name = name;
-
-//    Console.WriteLine("Podaj nazwisko zawodnika:");
-//    string surnname = Console.ReadLine();
-//    player.Surname = name;
-
-//    Console.WriteLine("Podaj drużynę zawodnika:");
-//    string club = Console.ReadLine();
-//    player.Club = name;
-//}
-
-
-
-
-using System;
-
-namespace BasketballStatsApp
+﻿namespace BasketballStatsApp
 {
     public class Program
     {
@@ -90,6 +8,10 @@ namespace BasketballStatsApp
 
             while (!exit)
             {
+                Console.WriteLine("Witaj w programie do prowadzenia statystyki punktów zdotbytych w meczach koszykarskich");
+                Console.WriteLine();
+                Console.WriteLine("----------------------------------------------------------------------------------------------------------------");
+                Console.WriteLine();
                 Console.WriteLine("Menu:");
                 Console.WriteLine();
                 Console.WriteLine("1. Dodaj punkty zawodnikowi (zapis danych do pliku) oraz wyświetl statystyki -----> Kliknij przycisk 1");
@@ -97,6 +19,8 @@ namespace BasketballStatsApp
                 Console.WriteLine("2. Dodaj punkty zawodnikowi (zapis danych w pamięci programu) oraz wyświetl statystyki -----> Kliknij przycisk 2");
                 Console.WriteLine();
                 Console.WriteLine("3. Zamknięcie programu -----> Kliknij przycisk 3");
+                Console.WriteLine();
+                Console.WriteLine("----------------------------------------------------------------------------------------------------------------");
                 Console.WriteLine();
                 Console.Write("Wybierz opcję: ");
 
@@ -135,7 +59,10 @@ namespace BasketballStatsApp
             PlayerInFile player = new PlayerInFile(name, surname, club);
 
             Console.WriteLine();
-            Console.Write("Podaj ilość zdobytych punktów: ");
+            Console.WriteLine("Ilość punktów wpisz jako wartość liczbową od 1 do 100 lub jako wartość literową od A/a do E/e (A/a - 100 pkt, B/b - 80 pkt, C/c - 60 pkt, D/d - 40 pkt, E/e - 20 pkt)");
+            Console.WriteLine();
+            Console.Write("Podaj liczbę punktów: ");
+
             while (true)
             {
                 string scoreInput = Console.ReadLine();
@@ -147,6 +74,7 @@ namespace BasketballStatsApp
                 try
                 {
                     player.AddScore(scoreInput);
+                    Console.WriteLine();
                     Console.WriteLine("Punkty za mecz dodane pomyślnie. Podaj punkty zdobyte w kolejnym meczu lub przejdź do statystyk wpisując x");
                 }
                 catch (Exception ex)
@@ -155,16 +83,21 @@ namespace BasketballStatsApp
                 }
             }
 
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine();
             Console.WriteLine("Statystyki:");
             var statisctics = player.GetStatistics();
             Console.WriteLine();
-            Console.WriteLine($"AVG: {statisctics.Average}");
-            Console.WriteLine($"MIN: {statisctics.Min}");
-            Console.WriteLine($"MAX: {statisctics.Max}");
-            Console.WriteLine($"AVG LETTER: {statisctics.AverageLetter}");
-            Console.WriteLine($"COUNT: {statisctics.Count}");
-            Console.WriteLine($"SUM: {statisctics.Sum}");
+            Console.WriteLine($"Średnia liczba punktów zdobtya na mecz: {statisctics.Average}");
+            Console.WriteLine($"Minimalna liczba punktów zdobyta w meczu: {statisctics.Min}");
+            Console.WriteLine($"Maksymalna liczba punktów zdobyta w meczu: {statisctics.Max}");
+            Console.WriteLine($"Ocena literowa: {statisctics.AverageLetter}");
+            Console.WriteLine($"Ilość rozgeranych meczy: {statisctics.Count}");
+            Console.WriteLine($"Liczba punktów zdobyta we wszystkich meczach: {statisctics.Sum}");
             Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine();
+
         }
 
 
@@ -183,7 +116,10 @@ namespace BasketballStatsApp
             PlayerInMemory player = new PlayerInMemory(name, surname, club);
 
             Console.WriteLine();
-            Console.Write("Podaj ilość zdobytych punktów: ");
+            Console.WriteLine("Ilość punktów wpisz jako wartość liczbową od 1 do 100 lub jako wartość literową od A/a do E/e (A/a - 100 pkt, B/b - 80 pkt, C/c - 60 pkt, D/d - 40 pkt, E/e - 20 pkt)");
+            Console.WriteLine();
+            Console.Write("Podaj liczbę punktów: ");
+
             while (true)
             {
                 string scoreInput = Console.ReadLine();
@@ -195,6 +131,7 @@ namespace BasketballStatsApp
                 try
                 {
                     player.AddScore(scoreInput);
+                    Console.WriteLine();
                     Console.WriteLine("Punkty za mecz dodane pomyślnie. Podaj punkty zdobyte w kolejnym meczu lub przejdź do statystyk wpisując x");
                 }
                 catch (Exception ex)
@@ -203,18 +140,21 @@ namespace BasketballStatsApp
                 }
             }
 
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine();
             Console.WriteLine("Statystyki:");
             var statisctics = player.GetStatistics();
             Console.WriteLine();
-            Console.WriteLine($"AVG: {statisctics.Average}");
-            Console.WriteLine($"MIN: {statisctics.Min}");
-            Console.WriteLine($"MAX: {statisctics.Max}");
-            Console.WriteLine($"AVG LETTER: {statisctics.AverageLetter}");
-            Console.WriteLine($"COUNT: {statisctics.Count}");
-            Console.WriteLine($"SUM: {statisctics.Sum}");
+            Console.WriteLine($"Średnia liczba punktów zdobtya na mecz: {statisctics.Average}");
+            Console.WriteLine($"Minimalna liczba punktów zdobyta w meczu: {statisctics.Min}");
+            Console.WriteLine($"Maksymalna liczba punktów zdobyta w meczu: {statisctics.Max}");
+            Console.WriteLine($"Ocena literowa: {statisctics.AverageLetter}");
+            Console.WriteLine($"Ilość rozgeranych meczy: {statisctics.Count}");
+            Console.WriteLine($"Liczba punktów zdobyta we wszystkich meczach: {statisctics.Sum}");
+            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------------");
             Console.WriteLine();
         }
-
     }
 }
 
