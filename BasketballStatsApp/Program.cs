@@ -38,7 +38,9 @@
                         exit = true;
                         break;
                     default:
+                        Console.WriteLine();
                         Console.WriteLine("Niepoprawny wybór. Spróbuj ponownie.");
+                        Console.WriteLine();
                         break;
                 }
             }
@@ -53,10 +55,11 @@
             Console.Write("Podaj nazwisko: ");
             string surname = Console.ReadLine();
 
+          
             Console.Write("Podaj klub: ");
             string club = Console.ReadLine();
 
-            PlayerInFile player = new PlayerInFile(name, surname, club);
+            PlayerInFile player = new PlayerInFile(name, surname, club );
 
             Console.WriteLine();
             Console.WriteLine("Ilość punktów wpisz jako wartość liczbową od 1 do 100 lub jako wartość literową od A/a do E/e (A/a - 100 pkt, B/b - 80 pkt, C/c - 60 pkt, D/d - 40 pkt, E/e - 20 pkt)");

@@ -1,15 +1,24 @@
-﻿namespace BasketballStatsApp
+﻿using System.Xml.Linq;
+
+namespace BasketballStatsApp
 {
     public class PlayerInFile : PlayerBase
     {
-        private const string fileName = @"C:\Users\marci\OneDrive\Pulpit\Projekty\BasketballStatsApp\BasketballStatsApp\scores.txt";
+        private string fileName;
+        private string playerName; 
+        private string playerSurname;
+        private string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
 
         public override event ScoreAddedDelegate ScoreAdded;
 
         public PlayerInFile(string name, string surname, string club)
             : base(name, surname, club)
         {
+            this.playerName = name;
+            this.playerSurname = surname;            
+            this.fileName = $@"{desktopPath}\{name}_{surname}_Scores.txt";
         }
+
 
         public override void AddScore(int score)
         {
